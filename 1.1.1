@@ -1,0 +1,28 @@
+class Hero:
+    def __init__(self, name, health, attack_power):
+        self.name = name
+        self.health = health
+        self.attack_power = attack_power
+        self.position = (0, 0)  # 初始位置
+
+    def move(self, x, y):
+        self.position = (x, y)
+        print(f"{self.name} 移动到 {self.position}")
+
+    def attack(self, target):
+        if isinstance(target, Hero):
+            target.health -= self.attack_power
+            print(f"{self.name} 攻击 {target.name}，造成 {self.attack_power} 伤害")
+            print(f"{target.name} 剩余生命值: {target.health}")
+
+# 创建两个英雄
+hero1 = Hero("亚瑟", 100, 20)
+hero2 = Hero("李白", 80, 25)
+
+# 英雄移动
+hero1.move(1, 1)
+hero2.move(2, 2)
+
+# 英雄攻击
+hero1.attack(hero2)
+hero2.attack(hero1)
